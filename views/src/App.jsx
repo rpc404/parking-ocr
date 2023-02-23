@@ -1,39 +1,32 @@
-import React, { useRef, useState } from "react";
+import React from 'react'
+import {
+  createBrowserRouter,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
 
-function App() {
-  const videoRef = useRef();
-  const canvasRef = useRef();
-  const [imageUrl, setImageUrl] = useState("");
+import Checkout from './pages/checkout';
+import Home from './pages/home';
+import Record from './pages/record';
 
-  const startCamera = async () => {
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-      videoRef.current.srcObject = stream;
-      videoRef.current.play();
-    } catch (error) {
-      console.log("Error accessing camera:", error);
-    }
-  };
-
-  const captureImage = () => {
-    const canvas = canvasRef.current;
-    const video = videoRef.current;
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
-    canvas.getContext("2d").drawImage(video, 0, 0, canvas.width, canvas.height);
-    setImageUrl(canvas.toDataURL());
-  };
-
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <Home />,
+    },
+    {
+      path: "/record",
+      element: <Record />,
+    },
+    {
+      path: "/checkout",
+      element: <Checkout />,
+    },
+  ]
+);
+export default function App() {
   return (
-    <div>
-      <h1>Parking OCR</h1>
-      <video ref={videoRef} width={640} height={480} />
-      <canvas ref={canvasRef} style={{ display: "none" }} />
-      <button onClick={startCamera}>Start Camera</button>
-      <button onClick={captureImage}>Capture Image</button>
-      {imageUrl && <img src={imageUrl} alt="Captured Image" />}
-    </div>
-  );
+    <RouterProvider router={router} />
+  )
 }
-
-export default App;
