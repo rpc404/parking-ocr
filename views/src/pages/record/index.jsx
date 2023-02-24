@@ -21,6 +21,7 @@ function Record() {
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
     canvas.getContext("2d").drawImage(video, 0, 0, canvas.width, canvas.height);
+    console.log(canvas.toDataURL(), Date.now());
     setImageUrl(canvas.toDataURL());
   };
 

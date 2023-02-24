@@ -1,0 +1,21 @@
+{
+  "name": "parking-ocr",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/rpc404/parking-ocr.git",
+  "author": "rpc404 <theboringschool.org@gmail.com>",
+  "license": "The Unlicense",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "helmet": "^6.0.1",
+    "tesseract.js": "^4.0.2"
+  },
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
