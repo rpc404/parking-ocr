@@ -1,10 +1,9 @@
-const express = require('express');
+const express = require("express");
 
 const CheckoutRouter = express.Router();
 
-CheckoutRouter.get('/', (req, res) => {
-    res.send('Hello World!');
-    }
-);
+CheckoutRouter.get("/", (req, res) => {
+  res.send("Hello World!");
+});
 
 module.exports = CheckoutRouter;
